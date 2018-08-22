@@ -1,10 +1,10 @@
 language: java
 sudo: required
-script:  mvn deploy
+script:  mvn package
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
   file_glob: true
   file:
-    - "build/distributions/*.jar"
+    - target/stash-pullrequest-builder.hpi
   skip_cleanup: true
