@@ -6,5 +6,5 @@ deploy:
   api_key: $GITHUB_TOKEN
   file_glob: true
   file:
-    - target/stash-pullrequest-builder.hpi
+    - target/*
   skip_cleanup: true
