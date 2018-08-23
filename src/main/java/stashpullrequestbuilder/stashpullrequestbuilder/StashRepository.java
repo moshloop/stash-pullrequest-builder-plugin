@@ -57,14 +57,18 @@ public class StashRepository {
     }
 
     public void init() {
-        trigger = this.builder.getTrigger();
-        client = new StashApiClient(
-                trigger.getStashHost(),
-                trigger.getUsername(),
-                trigger.getPassword(),
-                trigger.getProjectCode(),
-                trigger.getRepositoryName(),
-                trigger.isIgnoreSsl());
+	if (trigger == null) {    
+        	trigger = this.builder.getTrigger();
+	}
+	if (client == null) {
+		client = new StashApiClient(
+			trigger.getStashHost(),
+			trigger.getUsername(),
+			trigger.getPassword(),
+			trigger.getProjectCode(),
+			trigger.getRepositoryName(),
+			trigger.isIgnoreSsl());
+	}
     }
 
     public Collection<StashPullRequestResponseValue> getTargetPullRequests() {
@@ -170,6 +174,7 @@ public class StashRepository {
     }
 
     public void deletePullRequestComment(String pullRequestId, String commentId) {
+	this.init()
         this.client.deletePullRequestComment(pullRequestId, commentId);
     }
 
