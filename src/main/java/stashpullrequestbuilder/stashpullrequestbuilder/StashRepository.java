@@ -174,7 +174,7 @@ public class StashRepository {
     }
 
     public void deletePullRequestComment(String pullRequestId, String commentId) {
-	this.init()
+	this.init();
         this.client.deletePullRequestComment(pullRequestId, commentId);
     }
 
